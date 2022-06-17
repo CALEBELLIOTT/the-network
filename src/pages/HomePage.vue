@@ -1,14 +1,14 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-2">
-        <AccountBar></AccountBar>
+      <div class="col-md-3">
+        <AccountBar class="sticky"></AccountBar>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-6">
         <Post v-for="p in posts" :key="p.id" :post="p"></Post>
       </div>
-      <div class="col-md-2">
-        <AdBar></AdBar>
+      <div class="col-md-3">
+        <AdBar class="sticky"></AdBar>
       </div>
     </div>
   </div>
@@ -47,4 +47,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.sticky {
+  position: sticky;
+  top: .5em;
+}
 </style>

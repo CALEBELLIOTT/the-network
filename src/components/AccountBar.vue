@@ -1,6 +1,6 @@
 
 <template>
-  <div class="row">
+  <div class="row sticky">
     <div class="col-12 d-flex flex-column">
       <div class=" bg-light elevation-2 my-2 p-2 rounded">
         <img class="img-thumbnail" :src="account.picture" alt="">
