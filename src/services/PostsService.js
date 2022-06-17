@@ -9,6 +9,13 @@ class PostsService {
     AppState.posts = res.data.posts
   }
 
+  async like(id) {
+    const res = await api.post("api/posts/" + id + "/like", "")
+    let found = AppState.posts.indexOf(AppState.posts.find(p => p.id == id))
+    console.log(found);
+    AppState.posts[found] = res.data
+  }
+
 }
 
 

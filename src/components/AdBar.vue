@@ -4,7 +4,7 @@
     <div class="col-12">
       <div class=" bg-light elevation-2 my-2 p-2 rounded">
         <div v-for="a in ads">
-          <p>a message from our sponsor</p>
+          <p></p>
           <img class="img-fluid rounded" :src="a.square" alt="">
         </div>
       </div>
