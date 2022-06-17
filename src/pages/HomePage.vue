@@ -1,36 +1,50 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo" class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <AccountBar></AccountBar>
+      </div>
+      <div class="col-md-8">
+        <Post v-for="p in posts" :key="p.id" :post="p"></Post>
+      </div>
+      <div class="col-md-2">
+        <AdBar></AdBar>
+      </div>
     </div>
   </div>
+
+
 </template>
 
 <script>
+import { computed, onMounted } from "vue"
+import Pop from "../utils/Pop"
+import { adsService } from "../services/AdsService"
+import { postsService } from "../services/PostsService"
+import AccountBar from "../components/AccountBar.vue"
+import AdBar from "../components/AdBar.vue"
+import Post from "../components/Post.vue"
+import { AppState } from "../AppState"
 export default {
-  name: 'Home'
+  name: "Home",
+  setup() {
+    onMounted(async () => {
+      try {
+        await adsService.getAds();
+        await postsService.getPosts();
+      }
+      catch (error) {
+        console.error(error);
+        Pop.toast(error.message);
+      }
+    });
+    return {
+      posts: computed(() => AppState.posts)
+    }
+  },
+  components: { AccountBar, AdBar, Post }
 }
 </script>
 
 <style scoped lang="scss">
-.home{
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-  .home-card{
-    width: 50vw;
-    > img{
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
-}
 </style>
