@@ -5,6 +5,7 @@
         <AccountBar class="sticky"></AccountBar>
       </div>
       <div class="col-md-6">
+        <CreatePostBar></CreatePostBar>
         <Post v-for="p in posts" :key="p.id" :post="p"></Post>
       </div>
       <div class="col-md-3">
@@ -25,6 +26,7 @@ import AccountBar from "../components/AccountBar.vue"
 import AdBar from "../components/AdBar.vue"
 import Post from "../components/Post.vue"
 import { AppState } from "../AppState"
+import CreatePostBar from "../components/CreatePostBar.vue"
 export default {
   name: "Home",
   setup() {
@@ -42,7 +44,7 @@ export default {
       posts: computed(() => AppState.posts)
     }
   },
-  components: { AccountBar, AdBar, Post }
+  components: { AccountBar, AdBar, Post, CreatePostBar }
 }
 </script>
 

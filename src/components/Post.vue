@@ -12,6 +12,7 @@
     </div>
     <div class="p-2 bg-light rounded-bottom border-top border-2 border-primary">
       <p class="post-text">{{ post.body }}</p>
+      <img :src="post.imgUrl" class="img-fluid" alt="">
       <h1><i :id="'like-' + post.id" :class="` like-btn mdi mdi-heart`" @click="like(post.id)"></i>
         {{ post.likes.length }}
       </h1>
