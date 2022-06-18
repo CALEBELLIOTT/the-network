@@ -2,11 +2,14 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
-        <AccountBar class="sticky"></AccountBar>
+        <AccountBar class="sticky" v-if="user.name"></AccountBar>
+        <AdBar class="sticky" v-if="!user.name"></AdBar>
       </div>
       <div class="col-md-6">
-        <CreatePostBar></CreatePostBar>
+        <CreatePostBar v-if="user.name"></CreatePostBar>
+        <PageNavigation></PageNavigation>
         <Post v-for="p in posts" :key="p.id" :post="p"></Post>
+        <PageNavigation></PageNavigation>
       </div>
       <div class="col-md-3">
         <AdBar class="sticky"></AdBar>
@@ -27,6 +30,7 @@ import AdBar from "../components/AdBar.vue"
 import Post from "../components/Post.vue"
 import { AppState } from "../AppState"
 import CreatePostBar from "../components/CreatePostBar.vue"
+import PageNavigation from "../components/PageNavigation.vue"
 export default {
   name: "Home",
   setup() {
@@ -41,10 +45,11 @@ export default {
       }
     });
     return {
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts),
+      user: computed(() => AppState.user)
     }
   },
-  components: { AccountBar, AdBar, Post, CreatePostBar }
+  components: { AccountBar, AdBar, Post, CreatePostBar, PageNavigation }
 }
 </script>
 

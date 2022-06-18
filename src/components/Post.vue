@@ -1,19 +1,26 @@
 
 <template>
   <div class="row my-2 elevation-3 rounded text-dark">
-    <div class="col-12 bg-light d-flex p-2 rounded-top">
-      <router-link :to="{ name: 'Profile', params: { id: post.creator.id } }">
-        <img class="img-fluid profile-img selectable" :src="post.creator.picture" alt="">
-      </router-link>
-      <div class="d-flex flex-column p-2 m-2">
-        <p>{{ post.creator.name }} <i class="mdi mdi-school" v-if="post.creator.graduated"></i></p>
-        <p>time</p>
+    <div class="col-12 bg-light d-flex justify-content-between p-2 rounded-top">
+      <div>
+        <router-link :to="{ name: 'Profile', params: { id: post.creator.id } }">
+          <img class="img-fluid profile-img selectable" :src="post.creator.picture" alt="">
+        </router-link>
+        <div class="d-flex flex-column p-2 m-2">
+          <p>{{ post.creator.name }} <i class="mdi mdi-school" v-if="post.creator.graduated"></i></p>
+          <p>time</p>
+        </div>
+      </div>
+      <div @click="deletePost(post.id)" class="div" v-if="user.email == post.creator.email">
+        <button class="btn btn-danger"><i class="mdi mdi-trash-can"></i></button>
       </div>
     </div>
     <div class="p-2 bg-light rounded-bottom border-top border-2 border-primary">
       <p class="post-text">{{ post.body }}</p>
       <img :src="post.imgUrl" class="img-fluid" alt="">
-      <h1><i :id="'like-' + post.id" :class="` like-btn mdi mdi-heart`" @click="like(post.id)"></i>
+      <h1><i :id="'like-' + post.id"
+          :class="`${post.likeIds.find(id => id == user.id) ? 'text-primary' : ''} like-btn mdi mdi-heart`"
+          @click="like(post.id)"></i>
         {{ post.likes.length }}
       </h1>
     </div>
@@ -46,7 +53,16 @@ export default {
           console.error(error)
         }
       },
-
+      async deletePost(id) {
+        if (await Pop.confirm("Are you sure you want to delete this post?", "This cannot be undone", "warning")) {
+          try {
+            await postsService.deletePost(id)
+          } catch (error) {
+            console.error(error)
+            Pop.toast(error.message, "error")
+          }
+        }
+      }
     }
   }
 }

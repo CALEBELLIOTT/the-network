@@ -4,27 +4,47 @@
     <div class="col-3 p-2">
       <img class="img-fluid profile-img" :src="user.picture" alt="">
     </div>
-    <div class="col-9 p-2">
-      <form action="">
-        <textarea class="form-control" placeholder="Share what's happening..." name="" id="" cols="30"
-          rows="5"></textarea>
+    <div class="col-9 p-2 text-end">
+      <form action="" @submit.prevent="createPost()">
+        <textarea v-model="data.body" class="form-control" placeholder="Share what's happening..." name="" id=""
+          cols="30" rows="5"></textarea>
+        <input v-model="data.imgUrl" class="form-control mt-2" placeholder="img-url..." type="text">
+        <div class="row">
+          <div class="col-12">
+            <button class="post-btn" type="submit">
+              <h3 class="mt-2"><i class="post-btn mdi mdi-send post-btn"></i></h3>
+            </button>
+          </div>
+        </div>
       </form>
-    </div>
-    <div class="col-12 text-end text-primary">
-      <h3><i class="mdi mdi-send post-btn"></i></h3>
     </div>
   </div>
 </template>
 
 
 <script>
-import { computed } from "vue"
+import { computed, popScopeId, ref } from "vue"
 import { AppState } from "../AppState"
+import { postsService } from "../services/PostsService"
+import Pop from "../utils/Pop"
 
 export default {
   setup() {
+    const data = ref({})
     return {
-      user: computed(() => AppState.user)
+      data,
+      user: computed(() => AppState.user),
+      async createPost() {
+
+        try {
+          console.log(data.value);
+          await postsService.createPost(data.value)
+        } catch (error) {
+          Pop.toast(error.message, "error")
+          console.error(error)
+        }
+        await postsService.getPosts()
+      }
     }
   }
 }
@@ -43,5 +63,15 @@ export default {
 .post-btn:hover {
   text-shadow: 0 0 10px #B6D369;
   cursor: pointer;
+}
+
+.post-btn {
+  color: #B6D369;
+}
+
+.post-btn {
+  background: none;
+  padding: 0px;
+  border: none;
 }
 </style>
