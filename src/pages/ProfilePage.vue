@@ -31,8 +31,7 @@ import { AppState } from "../AppState"
 import AdBar from "../components/AdBar.vue"
 import { adsService } from "../services/AdsService"
 import Post from "../components/Post.vue"
-undefined
-undefined
+
 
 export default {
   setup() {

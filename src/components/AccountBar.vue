@@ -10,6 +10,7 @@
         <h5><i class="mdi mdi-github text-primary"></i>{{ account.github || ' N/A' }}</h5>
         <h5><i class="mdi mdi-linkedin text-primary"></i>{{ account.linkedin || ' N/A' }}</h5>
         <h5><i class="mdi mdi-notebook text-primary"></i>{{ account.resume || ' N/A' }}</h5>
+                <EditProfileModal></EditProfileModal>
       </div>
     </div>
   </div>
