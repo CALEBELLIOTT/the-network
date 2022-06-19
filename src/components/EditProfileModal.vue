@@ -42,6 +42,7 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from '../AppState'
+import { Modal } from 'bootstrap'
 
 
 export default {
