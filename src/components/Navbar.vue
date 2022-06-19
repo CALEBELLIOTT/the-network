@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }" @click="resetPage()">
       <div class="d-flex align-items-center">
         <h2>The Network</h2>
         <img class="img-fluid logo ms-2" src="../assets/img/221-2212168_planeta-website-logo-png-green.png" alt="">
@@ -22,9 +22,17 @@
 </template>
 
 <script>
+import { AppState } from '../AppState';
+import { postsService } from '../services/PostsService';
+
 export default {
   setup() {
-    return {};
+    return {
+      async resetPage() {
+        AppState.currentPage = 1
+        postsService.getPosts()
+      }
+    };
   },
 };
 </script>
