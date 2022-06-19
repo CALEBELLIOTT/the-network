@@ -7,7 +7,9 @@
       </div>
       <div class="col-md-6">
         <ProfileInfo class="mb-5"></ProfileInfo>
+        <ProfilePageNavigation :profile="id"></ProfilePageNavigation>
         <Post v-for="p in activePosts" :post="p"></Post>
+        <ProfilePageNavigation :profile="id"></ProfilePageNavigation>
       </div>
       <div class="col-md-3">
         <AdBar class="sticky"></AdBar>
@@ -36,6 +38,7 @@ export default {
   setup() {
     onMounted(async () => {
       try {
+        AppState.currentPage = 1
         await adsService.getAds()
         await profilesService.setActiveProfile(route.params.id);
         await profilesService.getActiveProfilePosts(route.params.id)
@@ -48,7 +51,8 @@ export default {
     const route = useRoute();
     return {
       profile: computed(() => AppState.activeProfile),
-      activePosts: computed(() => AppState.activeProfilePosts)
+      activePosts: computed(() => AppState.activeProfilePosts),
+      id: route.params.id
     };
   },
   components: { AdBar, Post }

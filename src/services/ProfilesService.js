@@ -14,6 +14,7 @@ class ProfilesService {
     const res = await api.get("/api/profiles/" + id + "/posts")
     console.log(res.data);
     AppState.activeProfilePosts = res.data.posts
+    AppState.totalPages = res.data.totalPages
   }
 }
 

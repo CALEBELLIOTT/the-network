@@ -35,6 +35,7 @@ export default {
   name: "Home",
   setup() {
     onMounted(async () => {
+      AppState.currentPage = 1
       try {
         await adsService.getAds();
         await postsService.getPosts();
