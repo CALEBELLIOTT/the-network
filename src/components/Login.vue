@@ -14,7 +14,7 @@
       </div>
       <div class="dropdown-menu p-0 list-group w-100" aria-labelledby="authDropdown">
         <router-link :to="{ name: 'Account' }">
-          <div class="list-group-item list-group-item-action hoverable">
+          <div class="list-group-item list-group-item-action hoverable" @click="setAccount()">
             Manage Account
           </div>
         </router-link>
@@ -43,6 +43,9 @@ export default {
       async logout() {
         AuthService.logout({ returnTo: window.location.origin });
       },
+      setAccount() {
+        AppState.activeProfile = AppState.account
+      }
     };
   },
 };

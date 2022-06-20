@@ -69,6 +69,9 @@ export default {
       },
       convertTime(time) {
         let seconds = Date.parse(time)
+        let date = new Date(seconds)
+        let editedDate = date.toLocaleDateString()
+        return editedDate
       }
     }
   }

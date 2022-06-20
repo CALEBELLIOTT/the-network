@@ -6,9 +6,9 @@
         <router-link :to="{ name: 'Profile', params: { id: account.id } }">
           <img @click="resetData()" class="img-thumbnail" :src="account.picture" alt="">
         </router-link>
-        <h3 v-if="account.graduated"><i class="mdi mdi-school"></i></h3>
-        <p class="text-muted">{{ account.class }}</p>
         <p>{{ account.name }}</p>
+        <p class="text-muted">{{ account.class }}</p>
+        <h3 v-if="account.graduated"><i class="mdi mdi-school"></i></h3>
 
         <a :href="account.github">
           <h5><i class="mdi mdi-github text-primary"></i> GitHub</h5>
