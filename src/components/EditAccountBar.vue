@@ -10,7 +10,7 @@
                     <div class="col-md-8 p-2"></div>
                     <div class="col-md-4 p-2 " id="">
                         <input v-model="data.coverImg" type="text" class="form-control" placeholder="url...">
-                        <label class="mb-5 pb-5" for="">Cover Img-Url</label>
+                        <label class="mb-5 pb-5 text-shadow" for="">Cover Img-Url</label>
                     </div>
                 </div>
             </div>
@@ -45,10 +45,13 @@
             </div>
             <div class="col-12">
                 <label for="">Bio</label>
-                <textarea v-model="data.bio" class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                <textarea v-model="data.bio" placeholder="Tell us about yourself..." class="form-control" name="" id=""
+                    cols="30" rows="5"></textarea>
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-success-outline"><i class="mdi mdi-check"></i></button>
+                <button type="submit" class="edit-submit-btn">
+                    <h1 class="text-secondary"><i class="mdi mdi-check submit-check"></i></h1>
+                </button>
             </div>
         </div>
     </form>
@@ -107,6 +110,21 @@ export default {
 
 .background {
     background-image: url('https://www.duckrace.com/portals/130/images/1.jpg');
+}
+
+.edit-submit-btn {
+    background: none;
+    padding: 0px;
+    border: none;
+}
+
+.submit-check:hover {
+    cursor: pointer;
+    text-shadow: 0 0 10px #B6D369;
+}
+
+.text-shadow {
+    text-shadow: 1px 1px 0 white;
 }
 </style>
 
