@@ -35,10 +35,16 @@ class PostsService {
     AppState.posts = res.data.posts
   }
 
-  async changeProfilePage(id){
+  async changeProfilePage(id) {
     const res = await api.get("api/posts?page=" + AppState.currentPage + "&creatorId=" + id)
     console.log(res.data);
     AppState.activeProfilePosts = res.data.posts
+  }
+
+  async search(data) {
+    const res = await api.get('api/posts?query=' + data.query)
+    console.log(res.data);
+    AppState.posts = res.data.posts
   }
 
 }

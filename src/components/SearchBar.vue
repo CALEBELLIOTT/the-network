@@ -2,11 +2,11 @@
 <template>
     <div class="row d-flex justify-content-end">
         <div class="col-4">
-            <form action="" class="d-flex align-items-center">
+            <form @submit.prevent="search(data)" action="" class="d-flex align-items-center">
                 <button class="search-btn">
                     <h3><i class="mdi mdi-magnify text-primary m-2 search"></i></h3>
                 </button>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" v-model="data.query">
             </form>
         </div>
     </div>
@@ -14,9 +14,24 @@
 
 
 <script>
+import { ref } from 'vue'
+import { postsService } from '../services/PostsService'
+import Pop from '../utils/Pop'
+
 export default {
     setup() {
-        return {}
+        const data = ref({})
+        return {
+            data,
+            async search(data) {
+                try {
+                    await postsService.search(data)
+                } catch (error) {
+                    Pop.toast(error.message, "error")
+                    console.error(error)
+                }
+            }
+        }
     }
 }
 </script>
