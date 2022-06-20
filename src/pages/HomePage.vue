@@ -4,7 +4,6 @@
       <div class="col-md-3">
         <AccountBar class="sticky" v-if="user.name"></AccountBar>
         <AdBar class="sticky" v-if="!user.name"></AdBar>
-        <EditProfileModal></EditProfileModal>
       </div>
       <div class="col-md-6">
         <CreatePostBar v-if="user.name"></CreatePostBar>
@@ -33,7 +32,6 @@ import Post from "../components/Post.vue"
 import { AppState } from "../AppState"
 import CreatePostBar from "../components/CreatePostBar.vue"
 import PageNavigation from "../components/PageNavigation.vue"
-import EditProfileModal from "../components/EditProfileModal.vue"
 export default {
   name: "Home",
   setup() {
@@ -42,6 +40,7 @@ export default {
       try {
         await adsService.getAds();
         await postsService.getPosts();
+        console.log(AppState.user);
       }
       catch (error) {
         console.error(error);
@@ -53,7 +52,7 @@ export default {
       user: computed(() => AppState.user)
     }
   },
-  components: { AccountBar, AdBar, Post, CreatePostBar, PageNavigation, EditProfileModal }
+  components: { AccountBar, AdBar, Post, CreatePostBar, PageNavigation }
 }
 </script>
 

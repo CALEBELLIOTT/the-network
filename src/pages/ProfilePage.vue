@@ -7,6 +7,7 @@
       </div>
       <div class="col-md-6">
         <ProfileInfo class="mb-5"></ProfileInfo>
+        <EditAccountBar v-if="account.id == id"></EditAccountBar>
         <ProfilePageNavigation :profile="id"></ProfilePageNavigation>
         <Post v-for="p in activePosts" :post="p"></Post>
         <ProfilePageNavigation :profile="id"></ProfilePageNavigation>
@@ -31,6 +32,7 @@ import { AppState } from "../AppState"
 import AdBar from "../components/AdBar.vue"
 import { adsService } from "../services/AdsService"
 import Post from "../components/Post.vue"
+import EditAccountBar from "../components/EditAccountBar.vue"
 
 
 export default {
@@ -51,10 +53,11 @@ export default {
     return {
       profile: computed(() => AppState.activeProfile),
       activePosts: computed(() => AppState.activeProfilePosts),
-      id: route.params.id
+      id: route.params.id,
+      account: computed(() => AppState.account)
     };
   },
-  components: { AdBar, Post }
+  components: { AdBar, Post, EditAccountBar }
 }
 </script>
 

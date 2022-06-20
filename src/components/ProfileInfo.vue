@@ -43,6 +43,8 @@ export default {
 <style lang="scss" scoped>
 .banner-img {
   height: 15vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .profile-img {

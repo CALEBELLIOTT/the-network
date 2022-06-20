@@ -15,6 +15,7 @@ class ProfilesService {
     console.log(res.data);
     AppState.activeProfilePosts = res.data.posts
     AppState.totalPages = res.data.totalPages
+
   }
 }
 

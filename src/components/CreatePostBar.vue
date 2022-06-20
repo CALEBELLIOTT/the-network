@@ -2,7 +2,9 @@
 <template>
   <div class="row rounded elevation-3 bg-light mt-2 mb-5">
     <div class="col-3 p-2">
-      <img class="img-fluid profile-img" :src="user.picture" alt="">
+      <router-link :to="{ name: 'Profile', params: { id: account.id } }">
+        <img class="img-fluid profile-img" :src="account.picture" alt="">
+      </router-link>
     </div>
     <div class="col-9 p-2 text-end">
       <form action="" @submit.prevent="createPost()">
@@ -34,6 +36,7 @@ export default {
     return {
       data,
       user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
       async createPost() {
 
         try {
