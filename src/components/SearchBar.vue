@@ -1,7 +1,7 @@
 
 <template>
     <div class="row d-flex justify-content-end">
-        <div class="col-4">
+        <div class="col-md-4">
             <form @submit.prevent="search(data)" action="" class="d-flex align-items-center">
                 <button class="search-btn">
                     <h3><i class="mdi mdi-magnify text-primary m-2 search"></i></h3>
