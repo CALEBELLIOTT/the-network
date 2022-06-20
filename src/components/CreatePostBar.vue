@@ -3,7 +3,7 @@
   <div class="row rounded elevation-3 bg-light mt-2 mb-5">
     <div class="col-3 p-2">
       <router-link :to="{ name: 'Profile', params: { id: account.id } }">
-        <img class="img-fluid profile-img" :src="account.picture" alt="">
+        <img @click="resetData()" class="img-fluid profile-img" :src="account.picture" alt="">
       </router-link>
     </div>
     <div class="col-9 p-2 text-end">
@@ -47,6 +47,10 @@ export default {
           console.error(error)
         }
         await postsService.getPosts()
+      },
+      resetData() {
+        AppState.activeProfile = {}
+        AppState.activeProfilePosts = []
       }
     }
   }

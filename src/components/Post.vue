@@ -4,11 +4,11 @@
     <div class="col-12 bg-light d-flex justify-content-between p-2 rounded-top">
       <div>
         <router-link :to="{ name: 'Profile', params: { id: post.creator.id } }">
-          <img class="img-fluid profile-img selectable" :src="post.creator.picture" alt="">
+          <img @click="resetData()" class="img-fluid profile-img selectable" :src="post.creator.picture" alt="">
         </router-link>
         <div class="d-flex flex-column p-2 m-2">
           <p>{{ post.creator.name }} <i class="mdi mdi-school" v-if="post.creator.graduated"></i></p>
-          <p>time</p>
+          <p>{{ convertTime(post.createdAt) }}</p>
         </div>
       </div>
       <div @click="deletePost(post.id)" class="div" v-if="user.email == post.creator.email">
@@ -62,6 +62,13 @@ export default {
             Pop.toast(error.message, "error")
           }
         }
+      },
+      resetData() {
+        AppState.activeProfile = {}
+        AppState.activeProfilePosts = []
+      },
+      convertTime(time) {
+        let seconds = Date.parse(time)
       }
     }
   }

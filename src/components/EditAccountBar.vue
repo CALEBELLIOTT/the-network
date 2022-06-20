@@ -83,6 +83,7 @@ export default {
     /* object-fit: contain; */
     border-radius: 50%;
     transform: translateY(-3rem);
+    border: 2px solid #B6D369;
 }
 
 .translate-y {
