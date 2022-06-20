@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark gradient px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }" @click="resetPage()">
       <div class="d-flex align-items-center">
         <h2>The Network</h2>
@@ -54,5 +54,9 @@ a:hover {
 
 .logo {
   height: 3rem;
+}
+
+.gradient {
+  background-image: linear-gradient(to right, #b6d369, #bac262, #bbb25d, #b8a35b, #b2945b);
 }
 </style>

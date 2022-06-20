@@ -18,9 +18,7 @@
     <div class="p-2 bg-light rounded-bottom border-top border-2 border-primary">
       <p class="post-text">{{ post.body }}</p>
       <img :src="post.imgUrl" class="img-fluid" alt="">
-      <h1><i :id="'like-' + post.id"
-          :class="`${post.likeIds.find(id => id == user.id) ? 'text-primary' : ''} like-btn mdi mdi-heart`"
-          @click="like(post.id)"></i>
+      <h1><i :id="'like-' + post.id" :class="checkLiked(post) + ' like-btn mdi mdi-heart'" @click="like(post.id)"></i>
         {{ post.likes.length }}
       </h1>
     </div>
@@ -72,6 +70,13 @@ export default {
         let date = new Date(seconds)
         let editedDate = date.toLocaleDateString()
         return editedDate
+      },
+      checkLiked(props) {
+        let found = props.likeIds.find(p => p == AppState.account.id)
+        if (found) {
+          console.log("this should be green");
+          return ('text-primary ')
+        }
       }
     }
   }
@@ -85,6 +90,7 @@ export default {
   width: 5rem;
   object-fit: cover;
   border-radius: 50%;
+  border: #B6D369 solid 2px;
 }
 
 .post-text {
