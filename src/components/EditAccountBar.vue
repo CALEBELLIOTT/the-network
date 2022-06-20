@@ -26,17 +26,22 @@
                 <label for="">linkedIn</label>
                 <input v-model="data.linkedin" class="form-control" type="text" placeholder="url...">
             </div>
-            <div class="col-md-4 p-2 translate-y">
+            <div class="col-md-3 p-2 translate-y">
                 <label for="">Profile Img</label>
                 <input v-model="data.picture" class="form-control" type="text" placeholder="url...">
             </div>
-            <div class="col-md-4 translate-y p-2">
+            <div class="col-md-3 translate-y p-2">
                 <label for="">Class</label>
                 <input v-model="data.class" class="form-control" type="text" placeholder="Class Attended..">
             </div>
-            <div class="col-md-4 translate-y p-2 d-flex flex-column">
+            <div class="col-md-3 translate-y p-2 d-flex flex-column align-items-center">
                 <label for="">Graduated?</label>
-                <input v-model="data.graduated" class="" type="checkbox" placeholder="Class Attended..">
+                <input v-model="data.graduated" class="justify-self-center" type="checkbox"
+                    placeholder="Class Attended...">
+            </div>
+            <div class="col-md-3 translate-y p-2 d-flex flex-column">
+                <label for="">resume</label>
+                <input v-model="data.resume" class="form-control" type="text" placeholder="url...">
             </div>
             <div class="col-12">
                 <label for="">Bio</label>

@@ -3,7 +3,7 @@
   <div class="container-fluid text-dark">
     <div class="row">
       <div class="col-md-3">
-        <AdBar class="sticky"></AdBar>
+        <AdBar class="sticky d-md-block d-none"></AdBar>
       </div>
       <div class="col-md-6">
         <ProfileInfo class="mb-5"></ProfileInfo>

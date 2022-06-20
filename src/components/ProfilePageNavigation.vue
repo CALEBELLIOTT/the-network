@@ -1,6 +1,6 @@
 
 <template>
-  <div class="row text-secondary">
+  <div class="row text-secondary my-2">
     <div class="col-12 d-flex justify-content-around align-items-center">
       <h3><i class="mdi mdi-chevron-triple-left nav-active" @click="pageNav(1, profile)"></i>
       </h3>
@@ -20,11 +20,11 @@ import { postsService } from "../services/PostsService"
 
 
 export default {
-  props: {profile : {type: String, required: true}},
+  props: { profile: { type: String, required: true } },
   setup() {
     return {
       currentPage: computed(() => AppState.currentPage),
-      async pageNav(direction, profile){
+      async pageNav(direction, profile) {
         console.log(profile);
         if ((direction == 1 && AppState.currentPage < 2)) {
           Pop.toast("you cannot navigate that direction", "error")

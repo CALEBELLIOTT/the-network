@@ -2,12 +2,12 @@
 <template>
   <div class="row my-2 elevation-3 rounded text-dark">
     <div class="col-12 bg-light d-flex justify-content-between p-2 rounded-top">
-      <div>
+      <div class="d-flex">
         <router-link :to="{ name: 'Profile', params: { id: post.creator.id } }">
           <img @click="resetData()" class="img-fluid profile-img selectable" :src="post.creator.picture" alt="">
         </router-link>
         <div class="d-flex flex-column p-2 m-2">
-          <p>{{ post.creator.name }} <i class="mdi mdi-school" v-if="post.creator.graduated"></i></p>
+          <h3>{{ post.creator.name }} <i class="mdi mdi-school" v-if="post.creator.graduated"></i></h3>
           <p>{{ convertTime(post.createdAt) }}</p>
         </div>
       </div>
@@ -18,8 +18,9 @@
     <div class="p-2 bg-light rounded-bottom border-top border-2 border-primary">
       <p class="post-text">{{ post.body }}</p>
       <img :src="post.imgUrl" class="img-fluid" alt="">
-      <h1><i :id="'like-' + post.id" :class="checkLiked(post) + ' like-btn mdi mdi-heart'" @click="like(post.id)"></i>
-        {{ post.likes.length }}
+      <h1><i v-if="user.name" :id="'like-' + post.id" :class="checkLiked(post) + ' like-btn mdi mdi-heart'"
+          @click="like(post.id)"></i>
+        {{ post.likes.length }} <span v-if="!user.name"> likes</span>
       </h1>
     </div>
   </div>

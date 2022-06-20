@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-between">
           <img class="profile-img" :src="profile.picture" alt="">
           <div class="text-primary">
-            <h2>
+            <h2 class="text-shadow">
               <a :href="profile.github"><i class="mdi mdi-github selectable"></i></a>
               <a :href="profile.linkedin"><i class="mdi mdi-linkedin selectable"></i></a>
 
@@ -16,7 +16,7 @@
             </h2>
           </div>
         </div>
-        <p class="p-0 m-0">{{ profile.class }}</p>
+        <p class="p-0 m-0 text-muted">{{ profile.class }}</p>
         <h4 class="pt-2"><u>{{ profile.name }}</u> <i class="mdi mdi-school" v-if="profile.graduated"></i></h4>
         <p>{{ profile.bio }}</p>
       </div>
@@ -57,5 +57,9 @@ export default {
 
 .translate {
   transform: translateY(-3em);
+}
+
+.text-shadow {
+  text-shadow: 0 0 10px black;
 }
 </style>

@@ -6,7 +6,7 @@
                 <button class="search-btn">
                     <h3><i class="mdi mdi-magnify text-primary m-2 search"></i></h3>
                 </button>
-                <input type="text" class="form-control" v-model="data.query">
+                <input type="text" class="form-control" placeholder="filter..." v-model="data.query">
             </form>
         </div>
     </div>
