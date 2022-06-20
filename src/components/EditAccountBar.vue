@@ -64,6 +64,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { AppState } from '../AppState';
 import { accountService } from '../services/AccountService';
+import Pop from "../utils/Pop";
 
 
 export default {
@@ -77,6 +78,7 @@ export default {
             async editProfile() {
                 console.log(data.value);
                 await accountService.editProfile(data.value, AppState.activeProfile.id)
+                Pop.toast('Profile Updated', "success")
             }
         }
     }
